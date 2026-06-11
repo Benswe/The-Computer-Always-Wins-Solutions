@@ -108,11 +108,11 @@ def placeQueen(board, col):
         printBoard(board)
         return 1
     count = 0
-    for row in range(8): # loop through all possible columns
+    for row in range(8): # try each possible row 
         if isLegal(board, row, col):
             board[row][col] = col+1 # place the queen
-            count += placeQueen(board, col+1) # now attempt to solve the next row, if succesful, adds one to count, if not count stays at 0
-            board[row][col] = 0 # then reset the board after the call
+            count += placeQueen(board, col+1) # now attempt to solve the next column, if succesful, adds one to count, if not count stays at 0
+            board[row][col] = 0 # remove queen and try next row
     return count
 
 
