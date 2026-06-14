@@ -103,18 +103,17 @@ def playRandomly (board):
 
 
 def placeQueen(board, col):
-    # Use backtracking to find all 92 possible solutions to the eight queens game
+    # use backtracking to find all 92 possible solutions to the problem
     if col == 8:
         printBoard(board)
         return 1
     count = 0
-    for row in range(8): # try each possible row 
+    for row in range(8):
         if isLegal(board, row, col):
-            board[row][col] = col+1 # place the queen
-            count += placeQueen(board, col+1) # now attempt to solve the next column, if succesful, adds one to count, if not count stays at 0
-            board[row][col] = 0 # remove queen and try next row
+            board[row][col] = row+1
+            count += placeQueen(board, col+1) # only adds to count if one of the 92 solutions was succesfully found
+            board[row][col] = 0
     return count
-
 
 
                     
